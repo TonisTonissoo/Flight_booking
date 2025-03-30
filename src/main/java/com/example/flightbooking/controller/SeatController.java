@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/seats")
 public class SeatController {
@@ -19,8 +20,12 @@ public class SeatController {
     }
 
     @GetMapping
-    public List<Seat> getAllSeats() {
-        return seatRepository.findAll();
+    public List<Seat> getSeatsByFlightId(@RequestParam(required = false) Long flightId) {
+        if (flightId != null) {
+            return seatRepository.findByFlightId(flightId);
+        } else {
+            return seatRepository.findAll();
+        }
     }
 
     @GetMapping("/{id}")
@@ -39,7 +44,7 @@ public class SeatController {
         return seatRepository.findById(id).map(seat -> {
             seat.setSeatNumber(seatDetails.getSeatNumber());
             seat.setSeatType(seatDetails.getSeatType());
-            seat.setBooked(seatDetails.isBooked());
+            seat.set_booked(seatDetails.is_booked());
             seatRepository.save(seat);
             return ResponseEntity.ok(seat);
         }).orElseGet(() -> ResponseEntity.notFound().build());
@@ -52,5 +57,18 @@ public class SeatController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/{id}/reserve")
+    public ResponseEntity<?> reserveSeat(@PathVariable Long id) {
+        return seatRepository.findById(id).map(seat -> {
+            if (!seat.is_booked()) {
+                seat.set_booked(true);
+                seatRepository.save(seat);
+                return ResponseEntity.ok().build();
+            } else {
+                return ResponseEntity.badRequest().body("Seat is already booked");
+            }
+        }).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

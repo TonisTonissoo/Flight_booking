@@ -15,11 +15,16 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "seatNumber")
     private String seatNumber;
-    private String seatType; // "window", "aisle", "exit-row"
-    private boolean isBooked;
+
+    @Column(name = "seatType")
+    private String seatType;
+
+    @Column(name = "is_booked", nullable = false)
+    private boolean is_booked;
 
     @ManyToOne
-    @JoinColumn(name = "flight_id")
+    @JoinColumn(name = "flight_id", nullable = false)
     private Flight flight;
 }

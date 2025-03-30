@@ -1,0 +1,263 @@
+/* Üldine stiil */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Navigeerimismenüü */
+.navbar {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #1097f8;
+}
+
+/* Avaleht */
+.home-container {
+    background: white;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-container h1 {
+    color: #333;
+}
+
+.home-container p {
+    font-size: 18px;
+    color: #555;
+}
+
+.home-container button {
+    background-color: #007bff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.home-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Lennu detailide konteiner */
+.flight-details {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flight-details h2 {
+    color: #333;
+}
+
+.flight-details p {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+}
+
+/* Lennud */
+h2 {
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    padding: 15px;
+    margin: 10px auto;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Istekohtade valik */
+.seats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.seat {
+    padding: 12px 18px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.seat:hover {
+    background-color: #ddd;
+}
+
+.unavailable {
+    background-color: #b0b0b0;
+    color: white;
+    cursor: not-allowed;
+    border-color: #888;
+}
+
+.selected {
+    background-color: #28a745;
+    color: white;
+    border-color: #1e7e34;
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+}
+
+/* Broneeringuvorm */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+}
+
+button[type="submit"] {
+    background-color: #28a745;
+}
+.seats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 12px;
+    padding: 20px;
+    max-width: 500px;
+    margin: auto;
+    justify-content: center;
+}
+
+/* Üldine nupp */
+.seat {
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Tüübipõhised klassid */
+.window {
+    background-color: #4caf50;
+}
+
+.aisle {
+    background-color: #2196f3;
+}
+
+.middle {
+    background-color: #ff9800;
+}
+
+.unknown {
+    background-color: #ddd;
+}
+
+/* Valitud iste */
+.seat.selected {
+    outline: 3px solid #000;
+    transform: scale(1.1);
+    z-index: 2;
+}
+
+/* Broneeritud iste */
+.seat.unavailable {
+    background-color: #b0b0b0 !important;
+    color: white;
+    cursor: not-allowed;
+}
+
+/* Legend */
+.legend {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.legend .seat {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 5px;
+}

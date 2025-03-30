@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/flights")
 public class FlightController {
-
     private final FlightRepository flightRepository;
 
     public FlightController(FlightRepository flightRepository) {
